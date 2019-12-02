@@ -1,6 +1,6 @@
 
 let v = document.getElementById("localVideo");
 
-let mediaStream = await navigator.mediaDevices.getUserMedia({audio:true,video:true});
+let promise =  navigator.mediaDevices.getUserMedia({audio:true,video:true});
 
-v.srcObject = mediaStream
+promise.then(mediaStream =>{v.srcObject=mediaStream; });
