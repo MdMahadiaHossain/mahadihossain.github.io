@@ -1,4 +1,7 @@
 let v = document.getElementById("localVideo");
+let createOfferButton = document.getElementById("createOffer");
+let createOfferAnswer = document.getElementById("createAnswer");
+let createCanditate = document.getElementById("createCanditate");
 
 let promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
 
@@ -15,12 +18,23 @@ promise.then(mediaStream => {
   });
 });
 
-
-
-pc.addEventListener("icecandidate", event => {
-  // this candidate will be used in other peer.
-  console.log(event.candidate);
+createCanditate.addEventListener("click", e => {
+  pc.addEventListener("icecandidate", event => {
+    // this candidate will be used in other peer.
+    console.log(event.candidate);
+  });
 });
 
-// create offer
-pc.createOffer().then(rTCSessionDescriptionInit => {console.log(rTCSessionDescriptionInit)});
+createOfferButton.addEventListener("click", e => {
+  // create offer which is SDP and we will send it to the peer
+  pc.createOffer().then(rTCSessionDescriptionInit => {
+    console.log(rTCSessionDescriptionInit);
+  });
+});
+
+createOfferAnswer.addEventListener("click", e => {
+  // create Answer which is SDP and we will send it to the peer
+  pc.createAnswer().then(rTCSessionDescriptionInit => {
+    console.log(rTCSessionDescriptionInit);
+  });
+});
