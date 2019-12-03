@@ -56,7 +56,7 @@ createOfferAnswer.addEventListener("click", e => {
 
 setRemoteOfferButton.addEventListener("click",(e)=>{
  
-     pc.localDescription(offer);
+     pc.setLocalDescription(offer);
      pc.setRemoteDescription(JSON.parse(setRemoteOffer.value));
 
 })
