@@ -6,7 +6,7 @@ let pc = new RTCPeerConnection(null);
 
 promise.then(mediaStream => {
   v.srcObject = mediaStream;
-  const localStreem = mediaStream;
+  var localStreem = mediaStream;
 
   // add stream to RTCPeerConnection to send to peer
   localStreem.getTracks().forEach(track => {
@@ -22,5 +22,3 @@ pc.addEventListener("icecandidate", event => {
 });
 
 // create offer
-
-
