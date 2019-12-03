@@ -8,17 +8,17 @@ promise.then(mediaStream =>{
     v.srcObject=mediaStream;
     localStreem=mediaStream; 
 });
-console.log("next line")
-// let pc = new RTCPeerConnection(null)
 
-// pc.addEventListener("icecandidate",(event)=>{
-//     // this candidate will be used in other peer.
-//     console.log(event.candidate);
+let pc = new RTCPeerConnection(null)
 
-// });
-// // local stream is being added in RTCPeerConnection to send to peer
-// localStreem.getTracks.array.forEach(track => {
-//     pc.addTrack(track,localStreem);
-// });
+ pc.addEventListener("icecandidate",(event)=>{
+    // this candidate will be used in other peer.
+    console.log(event.candidate);
 
-// // create offer
+});
+// local stream is being added in RTCPeerConnection to send to peer
+localStreem.getTracks.array.forEach(track => {
+    pc.addTrack(track,localStreem);
+});
+
+// create offer
