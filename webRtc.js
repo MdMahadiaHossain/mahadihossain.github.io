@@ -23,3 +23,4 @@ pc.addEventListener("icecandidate", event => {
 });
 
 // create offer
+pc.createOffer().then(rTCSessionDescriptionInit => {console.log(rTCSessionDescriptionInit)});
