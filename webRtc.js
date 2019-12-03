@@ -1,16 +1,13 @@
 let v = document.getElementById("localVideo");
+let localStreem;
 
-
-let promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-
-promise.then(mediaStream => {
-  v.srcObject = mediaStream;
-  let localStreem = mediaStream;
-  // local stream is being added in RTCPeerConnection to send to peer
-  localStreem.getTracks.array.forEach(track => {
-    pc.addTrack(track, localStreem);
-  });
+let mediaStream = await navigator.mediaDevices.getUserMedia({
+  audio: true,
+  video: true
 });
+
+v.srcObject = mediaStream;
+localStreem = mediaStream;
 
 let pc = new RTCPeerConnection(null);
 
@@ -19,5 +16,9 @@ pc.addEventListener("icecandidate", event => {
   console.log(event.candidate);
 });
 
-// create offer
+// add stream to RTCPeerConnection to send to peer
+localStreem.getTracks().forEach((track)=> {
+    pc.addTrack(track,localStreem);
+});
 
+// create offer
