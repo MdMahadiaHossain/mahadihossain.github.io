@@ -1,7 +1,7 @@
 let v = document.getElementById("localVideo");
 let localStreem;
 
-let mediaStream = await navigator.mediaDevices.getUserMedia({
+let mediaStream = navigator.mediaDevices.getUserMedia({
   audio: true,
   video: true
 });
