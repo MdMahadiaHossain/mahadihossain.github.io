@@ -2,6 +2,16 @@ let v = document.getElementById("localVideo");
 let createOfferButton = document.getElementById("createOffer");
 let createOfferAnswer = document.getElementById("createAnswer");
 let createCanditate = document.getElementById("createCanditate");
+let setRemoteOffer = document.getElementById("setRemoteOffer");
+let setRemoteAnswer = document.getElementById("setRemoteAnswer");
+let setRemoteIce = document.getElementById("setRemoteIce");
+
+
+let setRemoteOfferButton = document.getElementById("setRemoteOfferButton");
+let setRemoteAnswerButton = document.getElementById("setRemoteAnswerButton");
+let setRemoteIceButton = document.getElementById("setRemoteIceButton");
+
+
 
 let promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
 
@@ -25,10 +35,13 @@ createCanditate.addEventListener("click", e => {
   });
 });
 
+
+let offer;
 createOfferButton.addEventListener("click", e => {
   // create offer which is SDP and we will send it to the peer
   pc.createOffer().then(rTCSessionDescriptionInit => {
     console.log(rTCSessionDescriptionInit);
+    offer = rTCSessionDescriptionInit;
   });
 });
 
@@ -38,3 +51,12 @@ createOfferAnswer.addEventListener("click", e => {
     console.log(rTCSessionDescriptionInit);
   });
 });
+
+
+
+setRemoteOfferButton.addEventListener("click",(e)=>{
+ 
+     pc.localDescription(offer);
+     pc.setRemoteDescription(JSON.parse(setRemoteOffer.value));
+
+})
