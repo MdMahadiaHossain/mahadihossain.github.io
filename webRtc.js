@@ -4,7 +4,7 @@ let localStreem;
 
 let promise =  navigator.mediaDevices.getUserMedia({audio:true,video:true});
 
-await promise.then(mediaStream =>{
+promise.then(mediaStream =>{
     v.srcObject=mediaStream;
     localStreem=mediaStream; 
 });
