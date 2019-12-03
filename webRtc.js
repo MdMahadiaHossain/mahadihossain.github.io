@@ -6,10 +6,11 @@ let pc = new RTCPeerConnection(null);
 
 promise.then(mediaStream => {
   v.srcObject = mediaStream;
-  var localStreem = mediaStream;
+  const localStreem = mediaStream;
 
   // add stream to RTCPeerConnection to send to peer
   localStreem.getTracks().forEach(track => {
+    console.log("adding track to RTCPeerConnection for remote peer");
     pc.addTrack(track, localStreem);
   });
 });
