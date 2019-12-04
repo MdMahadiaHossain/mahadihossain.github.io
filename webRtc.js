@@ -50,7 +50,7 @@ pc.addEventListener("track",(e)=>{
 createOfferButton.addEventListener("click", e => {
   // create offer which is SDP and we will send it to the peer
   pc.createOffer().then(rTCSessionDescriptionInit => {
-    Console.log(rTCSessionDescriptionInit);
+    console.log(rTCSessionDescriptionInit);
     pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{Console.log("Offer is set as localDescription")});
   });
 });
