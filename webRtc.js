@@ -1,7 +1,9 @@
 let v = document.getElementById("localVideo");
+let pv = document.getElementById("peerVideo");
+
 let createOfferButton = document.getElementById("createOffer");
 let createOfferAnswer = document.getElementById("createAnswer");
-let createCanditate = document.getElementById("createCanditate");
+
 let setRemoteOffer = document.getElementById("setRemoteOffer");
 let setRemoteAnswer = document.getElementById("setRemoteAnswer");
 let setRemoteIce = document.getElementById("setRemoteIce");
@@ -28,30 +30,42 @@ promise.then(mediaStream => {
   });
 });
 
-createCanditate.addEventListener("click", e => {
-  pc.addEventListener("icecandidate", event => {
-    // this candidate will be used in other peer.
-    console.log(event.candidate);
-  });
+pc.addEventListener("icecandidate", event => {
+  // this candidate will be used in other peer.
+  console.log("iceconnectionstatechange "+event.candidate);
+});
+pc.addEventListener("iceconnectionstatechange", event => {
+  // this candidate will be used in other peer.
+  console.log("iceconnectionstatechange "+event.candidate);
 });
 
+// getting remote streem 
+pc.addEventListener("track",(e)=>{
+  pv.srcObject=e.streams[0];
+})
 
-let offer;
+
 createOfferButton.addEventListener("click", e => {
   // create offer which is SDP and we will send it to the peer
   pc.createOffer().then(rTCSessionDescriptionInit => {
     console.log(rTCSessionDescriptionInit);
-    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit));
-    offer = rTCSessionDescriptionInit;
+    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{Console.log("Offer is set as localDescription")});
   });
 });
 
 createOfferAnswer.addEventListener("click", e => {
   // create Answer which is SDP and we will send it to the peer
   pc.createAnswer().then(rTCSessionDescriptionInit => {
-    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit));
+    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{Console.log("Answer is set as localDescription")});
     console.log(rTCSessionDescriptionInit);
   });
+});
+
+
+setRemoteIceButton.addEventListener("click", e => {
+  Console.log(setRemoteIce.value);
+  // add peer sent ice
+  pc.addIceCandidate(JSON.parse(setRemoteIce.value)).then(r=>{Console.log("ICE is set")})
 });
 
 
@@ -59,6 +73,11 @@ createOfferAnswer.addEventListener("click", e => {
 setRemoteOfferButton.addEventListener("click",(e)=>{
  
     console.log(setRemoteOffer.value);
-    pc.setRemoteDescription(JSON.parse(setRemoteOffer.value)).then((e) => {console.log("Remote offer set")})
+    pc.setRemoteDescription(new RTCSessionDescription(JSON.parse(setRemoteOffer.value))).then((e) => {console.log("Remote offer/answer set")})
 
 })
+
+
+
+
+
