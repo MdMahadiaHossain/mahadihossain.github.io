@@ -41,6 +41,7 @@ createOfferButton.addEventListener("click", e => {
   // create offer which is SDP and we will send it to the peer
   pc.createOffer().then(rTCSessionDescriptionInit => {
     console.log(rTCSessionDescriptionInit);
+    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit));
     offer = rTCSessionDescriptionInit;
   });
 });
@@ -48,6 +49,7 @@ createOfferButton.addEventListener("click", e => {
 createOfferAnswer.addEventListener("click", e => {
   // create Answer which is SDP and we will send it to the peer
   pc.createAnswer().then(rTCSessionDescriptionInit => {
+    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit));
     console.log(rTCSessionDescriptionInit);
   });
 });
