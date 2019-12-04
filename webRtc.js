@@ -65,7 +65,7 @@ createOfferAnswer.addEventListener("click", e => {
 
 
 setRemoteIceButton.addEventListener("click", e => {
-  Console.log(setRemoteIce.value);
+  console.log(setRemoteIce.value);
   // add peer sent ice
   pc.addIceCandidate(JSON.parse(setRemoteIce.value)).then(r=>{Console.log("ICE is set")})
 });
