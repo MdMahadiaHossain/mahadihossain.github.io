@@ -17,7 +17,9 @@ let setRemoteIceButton = document.getElementById("setRemoteIceButton");
 
 let promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
 
-let pc = new RTCPeerConnection(null);
+const configuration = {'iceServers': [{ 'urls': 'stun:stun.l.google.com:19302' }]};
+
+let pc = new RTCPeerConnection(configuration);
 
 promise.then(mediaStream => {
   v.srcObject = mediaStream;
