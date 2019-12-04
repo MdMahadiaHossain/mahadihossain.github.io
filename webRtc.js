@@ -11,7 +11,10 @@ let setRemoteIce = document.getElementById("setRemoteIce");
 
 let setRemoteOfferButton = document.getElementById("setRemoteOfferButton");
 let setRemoteAnswerButton = document.getElementById("setRemoteAnswerButton");
-let setRemoteIceButton = document.getElementById("setRemoteIceButton");
+let setRemoteIceButton = document.getElementById("setRemoteIceButton");\
+
+let getter = document.getElementById("getter");
+let ice = document.getElementById("ice");
 
 
 
@@ -35,6 +38,7 @@ promise.then(mediaStream => {
 pc.addEventListener("icecandidate", event => {
   // this candidate will be used in other peer.
   console.log("icecandidate "+JSON.stringify(event.candidate));
+  ice.value=JSON.stringify(event.candidate);
 });
 pc.addEventListener("iceconnectionstatechange", event => {
   // this candidate will be used in other peer.
@@ -50,7 +54,9 @@ pc.addEventListener("track",(e)=>{
 createOfferButton.addEventListener("click", e => {
   // create offer which is SDP and we will send it to the peer
   pc.createOffer().then(rTCSessionDescriptionInit => {
+    
     console.log(rTCSessionDescriptionInit);
+    getter.value=JSON.stringify(rTCSessionDescriptionInit);
     pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{console.log("Offer is set as localDescription")});
   });
 });
@@ -58,7 +64,8 @@ createOfferButton.addEventListener("click", e => {
 createOfferAnswer.addEventListener("click", e => {
   // create Answer which is SDP and we will send it to the peer
   pc.createAnswer().then(rTCSessionDescriptionInit => {
-    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{Console.log("Answer is set as localDescription")});
+    getter.value=JSON.stringify(rTCSessionDescriptionInit);
+    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{console.log("Answer is set as localDescription")});
     console.log(rTCSessionDescriptionInit);
   });
 });
@@ -67,7 +74,7 @@ createOfferAnswer.addEventListener("click", e => {
 setRemoteIceButton.addEventListener("click", e => {
   console.log(setRemoteIce.value);
   // add peer sent ice
-  pc.addIceCandidate(JSON.parse(setRemoteIce.value)).then(r=>{Console.log("ICE is set")})
+  pc.addIceCandidate(JSON.parse(setRemoteIce.value)).then(r=>{console.log("ICE is set")})
 });
 
 
