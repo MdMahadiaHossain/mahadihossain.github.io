@@ -51,7 +51,7 @@ createOfferButton.addEventListener("click", e => {
   // create offer which is SDP and we will send it to the peer
   pc.createOffer().then(rTCSessionDescriptionInit => {
     console.log(rTCSessionDescriptionInit);
-    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{Console.log("Offer is set as localDescription")});
+    pc.setLocalDescription(new RTCSessionDescription(rTCSessionDescriptionInit)).then(()=>{console.log("Offer is set as localDescription")});
   });
 });
 
