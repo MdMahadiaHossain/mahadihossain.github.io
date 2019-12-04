@@ -7,23 +7,19 @@
     <body>
         <head>See your face</head>
         <video id="localVideo" controls></video>
+        <video id="peerVideo" controls style="background: black; width: 300px; height: 200px;"></video>
     
         <button id="createOffer">CraeteOffer</button>
         <button id="createAnswer">CraeteAnswer</button>
-        <button id="createCanditate">CraeteCanditate</button>
+       
 
         <div>
-            <input id="setRemoteOffer"/>
+            <input id="setRemoteOffer" name="r"/>
             <p>
-                <button id="setRemoteOfferButton">setRemoteOffer</button>
+                <button id="setRemoteOfferButton">setRemoteOffer/Answer</button>
             </p>
         </div>
-        <div>
-            <input id="setRemoteAnswer"/>
-            <p>
-                <button id="setRemoteAnswerButton">setRemoteAnswer</button>
-            </p>
-        </div>
+    
         <div>
             <input id="setRemoteIce"/>
             <p>
@@ -31,8 +27,7 @@
             </p>
         </div>
         
-        
-        <input name="setRemoteAnswer"/>
+       
     </body>
     <script src="./webRtc.js"></script>
 </html>
