@@ -32,11 +32,11 @@ promise.then(mediaStream => {
 
 pc.addEventListener("icecandidate", event => {
   // this candidate will be used in other peer.
-  console.log("iceconnectionstatechange "+event.candidate);
+  console.log("icecandidate "+JSON.stringify(event.candidate));
 });
 pc.addEventListener("iceconnectionstatechange", event => {
   // this candidate will be used in other peer.
-  console.log("iceconnectionstatechange "+event.candidate);
+  console.log("iceconnectionstatechange "+JSON.stringify(event.candidate));
 });
 
 // getting remote streem 
