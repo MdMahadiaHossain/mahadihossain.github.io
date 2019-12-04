@@ -11,7 +11,7 @@ let setRemoteIce = document.getElementById("setRemoteIce");
 
 let setRemoteOfferButton = document.getElementById("setRemoteOfferButton");
 let setRemoteAnswerButton = document.getElementById("setRemoteAnswerButton");
-let setRemoteIceButton = document.getElementById("setRemoteIceButton");\
+let setRemoteIceButton = document.getElementById("setRemoteIceButton");
 
 let getter = document.getElementById("getter");
 let ice = document.getElementById("ice");
