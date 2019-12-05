@@ -20,18 +20,7 @@ let ice = document.getElementById("ice");
 
 let promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
 const constraints = {audio: true, video: true};
-const configuration = {'iceServers': [{ 'urls': ['stun.l.google.com:19302',
-'stun1.l.google.com:19302',
-'stun2.l.google.com:19302',
-'stun3.l.google.com:19302',
-'stun4.l.google.com:19302',
-'stun01.sipphone.com',
-'stun.ekiga.net',
-'stun.fwdnet.net',
-'stun.ideasip.com',
-'stun.iptel.org',
-'stun.rixtelecom.se',
-'stun.schlund.de'] }]};
+const configuration = {'iceServers': [{ 'urls': 'stuns:stun.l.google.com:19302' }]};
 
 let pc = new RTCPeerConnection(configuration);
 
