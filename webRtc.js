@@ -20,7 +20,7 @@ let ice = document.getElementById("ice");
 
 let promise = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
 const constraints = {audio: true, video: true};
-const configuration = {'iceServers': [{ 'urls': 'stuns:stun.l.google.com:19302' },{urls: "turn:numb.viagenie.ca",
+const configuration = {'iceServers': [{ 'urls': 'stun:stun.l.google.com:19302' },{urls: "turn:numb.viagenie.ca",
  username: "l1787875@mvrht.com",
  credential: "test"}]};
 
