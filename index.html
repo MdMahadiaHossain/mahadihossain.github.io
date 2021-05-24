@@ -88,7 +88,7 @@ li span {
   <h1 id="headline">Countdown to my Death:</h1>
   <div id="countdown">
     <ul>
-      <li><span id="days"></span>days</li>
+      <li><span id="years"></span>Years</li>
       <li><span id="hours"></span>Hours</li>
       <li><span id="minutes"></span>Minutes</li>
       <li><span id="seconds"></span>Seconds</li>
@@ -116,7 +116,7 @@ li span {
         let now = new Date().getTime(),
             distance = countDown - now;
 
-        document.getElementById("Years").innerText = (Math.floor(distance / (day))/364),
+        document.getElementById("years").innerText = (Math.floor(distance / (day))/364),
           document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
           document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
           document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
